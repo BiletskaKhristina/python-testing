@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "python-testing"
+version = "0.1.0"
+description = "Testing practice"
+authors = ["Student <student@example.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+flask = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.1.1"
+pytest-cov = "^7.1.0"
+coverage = "^7.16.2"
+
+[tool.pytest.ini_options]
+testpaths = ["example/testing"]
+python_files = ["test_*.py"]
+addopts = "--import-mode=prepend"
+markers = [
+    "unit: швидкі юніт-тести",
+    "integration: інтеграційні тести"
+]
+
+[tool.coverage.run]
+branch = true
+source = ["example/testing"]
+
+[tool.coverage.report]
+omit = [
+    "*/test_*.py",
+    "*/__init__.py"
+]
